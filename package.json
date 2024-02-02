@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "semver": "^7.5.4"
+  },
+  "name": "backend",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nad1ah/BackEnd.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nad1ah/BackEnd/issues"
+  },
+  "homepage": "https://github.com/Nad1ah/BackEnd#readme"
+}
