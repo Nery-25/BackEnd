@@ -1,17 +1,13 @@
 
 const express = require('express');
-
-
 const app = express();
 app.use(express.json());
-
 const PORT = process.env.PORT || 3000;
 
 
 
 
-let products = [];
-let idCounter = 1;
+
 
 // Listar todos os produtos (READ)
 app.get('/products', (req, res) => {
@@ -30,14 +26,32 @@ app.get('/products/:id', (req, res) => {
   res.status(200).json(product);
 });
 
-// Criar um novo produto (CREATE)
+// Listar produtos por nome (READ v2)
+app.get('/products/search', (req, res) => {
+  const { name } = req.query;
+  let filteredProducts = [];
+
+  if (!name) {
+    return res.status(400).json({ message: 'Informe o nome do produto para filtrar' });
+  }
+
+  filteredProducts = products.filter(product => product.name.toLowerCase().includes(name.toLowerCase()));
+
+  if (filteredProducts.length === 0) {
+    return res.status(404).json({ message: 'Nenhum produto encontrado com esse nome' });
+  }
+
+  res.status(200).json(filteredProducts);
+});
+
+/* // Criar um novo produto (CREATE)
 app.post('/products', (req, res) => {
   const newProduct = req.body;
   newProduct.id = idCounter++;
   products.push(newProduct);
 
   res.status(201).json(newProduct);
-});
+}); */
 
 // Atualizar um produto (UPDATE)
 app.put('/products/:id', (req, res) => {
